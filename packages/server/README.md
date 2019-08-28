@@ -26,7 +26,7 @@ In Domain Driven Development, we can also call it Repository. How to use it.
 ### Routers
 These are the Resources, the REST API. For example this:
 
-```ecmascript 6
+```javascript
 import { RestController, GET, POST, PUT, DELETE } from 'server-commons/router';
 import { NotFoundError } from 'server-commons/errors';
 import AddressService from '../services/AddressService';
@@ -64,7 +64,7 @@ export default class AddressRouter {
 ### Sequelize
 They are the Entities, the objects that are persisted on the database
 
-```ecmascript 6
+```javascript
 import { DataTypes } from 'sequelize';
 
 const { BIGINT, STRING } = DataTypes;
@@ -94,7 +94,7 @@ They have to keep the business logic
 
 ### index.js
 
-```ecmascript 6
+```javascript
 import Server from 'server-commons/server';
 import { join } from 'path';
 
