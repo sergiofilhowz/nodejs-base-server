@@ -1,0 +1,13 @@
+{
+  "name": "base-server-workspace",
+  "version": "1.0.0",
+  "description": "Node.js Base Server to boot up development",
+  "repository": "git@github.com:sergiofilhowz/nodejs-base-server.git",
+  "author": "Sérgio Marcelino <sergiofilhow@gmail.com>",
+  "license": "MIT",
+  "private": true,
+  "workespaces": [
+    "packages/server",
+    "packages/tester"
+  ]
+}

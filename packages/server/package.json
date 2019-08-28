@@ -1,0 +1,34 @@
+{
+  "name": "base-server",
+  "version": "1.0.0",
+  "description": "Base Server for Node.js",
+  "main": "./",
+  "scripts": {
+    "test": "mocha ./test --timeout 15000 --exit",
+    "cover": "istanbul cover _mocha -- test -R spec"
+  },
+  "keywords": [
+    "node",
+    "web",
+    "base",
+    "server",
+    "express"
+  ],
+  "license": "MIT",
+  "author": "Sérgio Marcelino <sergiofilhow@gmail.com>",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "body-parser": "^1.18.3",
+    "config": "^1.19.0",
+    "cors": "^2.8.4",
+    "express": "^4.17.1",
+    "express-power-router": "^1.0.0",
+    "healthcheck-middleware": "^1.0.1",
+    "lodash": "^4.17.11",
+    "mysql2": "^1.6.5",
+    "querystring": "^0.2.0",
+    "sequelize": "5.15.1",
+    "sequelize-migration-2": "^2.0.0",
+    "sequelize-transaction-manager": "^0.0.2"
+  }
+}

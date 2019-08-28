@@ -1,0 +1,21 @@
+{
+  "name": "base-server-tester",
+  "version": "1.0.0",
+  "description": "Server Commons Tester",
+  "main": "./index",
+  "scripts": {},
+  "keywords": [
+    "node",
+    "web",
+    "base",
+    "server",
+    "express"
+  ],
+  "license": "MIT",
+  "author": "Sérgio Marcelino <sergiofilhow@gmail.com>",
+  "dependencies": {
+    "chai": "^4.1.2",
+    "chai-http": "^4.2.0",
+    "lodash": "^4.17.10"
+  }
+}
