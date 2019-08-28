@@ -27,8 +27,8 @@ In Domain Driven Development, we can also call it Repository. How to use it.
 These are the Resources, the REST API. For example this:
 
 ```javascript
-import { RestController, GET, POST, PUT, DELETE } from 'server-commons/router';
-import { NotFoundError } from 'server-commons/errors';
+import { RestController, GET, POST, PUT, DELETE } from 'base-server/router';
+import { NotFoundError } from 'base-server/errors';
 import AddressService from '../services/AddressService';
 import AddressModel from '../models/AddressModel';
 
@@ -66,27 +66,24 @@ They are the Entities, the objects that are persisted on the database
 
 ```javascript
 import { DataTypes } from 'sequelize';
+import State from './State';
 
 const { BIGINT, STRING } = DataTypes;
 
-export default sequelize => {
-  const City = sequelize.define('City', {
-    id: { type: BIGINT, primaryKey: true, autoIncrement: true },
-    name: STRING
-  }, {
-    timestamps: false,
-    tableName: 'geo_city'
-  });
+const City = sequelize.define('City', {
+  id: { type: BIGINT, primaryKey: true, autoIncrement: true },
+  name: { type: STRING(256), allowNull: false },
+}, {
+  timestamps: false,
+  tableName: 'city'
+});
 
-  City.associate = ({ State }) => {
-    City.belongsTo(State, {
-      as: 'State',
-      foreignKey: 'state_id'
-    });
-  };
+City.belongsTo(State, {
+  as: 'State',
+  foreignKey: 'state_id'
+});
 
-  return City;
-};
+export default City;
 ```
 
 ### Services
@@ -95,17 +92,18 @@ They have to keep the business logic
 ### index.js
 
 ```javascript
-import Server from 'server-commons/server';
+import Server from 'base-server/server';
 import { join } from 'path';
 
 const server = new Server({
-  routersPath: join(__dirname, 'routers'),
-  modelsPath: join(__dirname, 'sequelize'),
   migration: {
-    name: 'this-is-your-server-name',
+    name: 'pipeu-event-schedule',
     dir: join(__dirname, '..', 'db'),
   },
 });
+
+// add requires to all your routers (compatible with Babel+Webpack)
+require('./routers/MyRouter');
 
 export default server;
 ```
